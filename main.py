@@ -67,10 +67,6 @@ class Comment(db.Model):
     post_id: Mapped[int] = mapped_column(ForeignKey("blog_posts.id"))
 
 
-with app.app_context():
-    db.create_all()
-
-
 @login_manager.user_loader
 def load_user(user_id):
     return db.session.get(User, user_id)
